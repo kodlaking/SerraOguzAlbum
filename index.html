@@ -5,97 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sana Bir Notum Var</title>
     <style>
-        /* Tasarım Ayarları */
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            overflow: hidden; /* Sayfa kaymasın, tam ekran dursun */
-        }
-
-        /* Arka Plan Fotoğrafı */
-        .background-image {
-            position: fixed;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            background-image: url('bizim-fotograf.jpg'); /* FOTOĞRAF ADINI BURAYA YAZ */
-            background-size: cover;
-            background-position: center;
-            /* Fotoğrafı hafif karartıp bulanıklaştırarak mesajı öne çıkarıyoruz */
-            filter: blur(3px) brightness(50%); 
-            transform: scale(1.1); /* Bulanıklık kenarlarda beyazlık yapmasın diye hafif büyütüyoruz */
-            z-index: -1;
+        body, html { margin: 0; padding: 0; background-color: #0b0b0b; font-family: 'Segoe UI', sans-serif; color: white; scroll-behavior: smooth; }
+        
+        /* Kapak Ekranı */
+        .hero { position: relative; height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center; }
+        .hero-bg { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            background: url('ana-foto.jpg') center/cover; 
+            filter: brightness(35%) blur(1px); z-index: -1; 
         }
 
         /* Mesaj Kutusu */
-        .main-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            padding: 20px;
+        .message-box { 
+            background: rgba(255, 255, 255, 0.98); color: #1a1a1a; 
+            padding: 35px; border-radius: 20px; max-width: 320px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); margin: 20px; 
         }
+        h1 { margin: 0 0 10px; font-size: 1.6rem; letter-spacing: -0.5px; }
+        p { font-size: 0.95rem; line-height: 1.6; color: #444; margin-bottom: 20px; }
+        .heart { color: #d63031; font-size: 1.2rem; }
 
-        .message-box {
-            background-color: rgba(255, 255, 255, 0.9); /* Hafif şeffaf beyaz kutu */
-            color: #333;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            max-width: 400px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
+        /* Galeri Alanı */
+        .gallery { padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; max-width: 1000px; margin: auto; }
+        .gallery img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; transition: 0.3s; }
+        .gallery img:hover { transform: scale(1.02); opacity: 0.8; }
 
-        h1 {
-            font-size: 2rem;
-            margin-top: 0;
-            margin-bottom: 15px;
-            color: #2c3e50;
-            font-weight: 600;
-        }
-
-        .date {
-            font-size: 0.85rem;
-            color: #7f8c8d;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-        }
-
-        .personal-note {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 0;
-            color: #444;
-        }
-
-        .heart-icon {
-            color: #e74c3c;
-            font-size: 1.2rem;
-            margin-top: 20px;
-        }
-
+        footer { text-align: center; padding: 40px; font-size: 0.7rem; color: #333; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
-    <div class="background-image"></div>
-
-    <div class="main-container">
+    <div class="hero">
+        <div class="hero-bg"></div>
         <div class="message-box">
-            <h1>İyi Ki Doğdun!</h1>
-            <div class="date">2024</div> <p class="personal-note">
-                Yeni yaşın sana tüm güzellikleri getirsin. <br>
-                Seninle geçen her an, paylaştığımız her gülümseme benim için çok değerli. <br>
-                Birlikte daha nice güzel anılar biriktirmek dileğiyle... <br>
-                İyi ki varsın.
-            </p>
-            
-            <div class="heart-icon">🤍</div> </div>
+            <h1>İyi ki Doğdun!</h1>
+            <p>Seninle geçen her an, paylaştığımız her gülümseme benim için çok değerli. Yeni yaşın sana tüm güzellikleri getirsin. <br><br> İyi ki varsın... <br> <span class="heart">❤</span></p>
+        </div>
     </div>
+
+    <div class="gallery" id="photoGallery">
+        <!-- Fotoğraflar buraya otomatik gelecek -->
+    </div>
+
+    <footer>2026 • ÖZEL BİR NOT</footer>
+
+    <script>
+        // KAÇ TANE FOTOĞRAF YÜKLEDİYSEN BURADAKİ SAYIYI DEĞİŞTİR
+        const toplamFotoSayisi = 12; 
+
+        const gallery = document.getElementById('photoGallery');
+        for (let i = 1; i <= toplamFotoSayisi; i++) {
+            const img = document.createElement('img');
+            img.src = `${i}.jpg`; // Fotoğrafların adları 1.jpg, 2.jpg... olmalı
+            img.loading = "lazy"; // Sayfanın hızlı açılması için
+            gallery.appendChild(img);
+        }
+    </script>
 
 </body>
 </html>
