@@ -5,79 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sana Bir Notum Var</title>
     <style>
-        body { 
-            font-family: 'Georgia', serif; 
-            margin: 0; 
-            background: #0a0a0a; 
-            color: #e0e0e0; 
+        /* Tasarım Ayarları */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden; /* Sayfa kaymasın, tam ekran dursun */
+        }
+
+        /* Arka Plan Fotoğrafı */
+        .background-image {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-image: url('bizim-fotograf.jpg'); /* FOTOĞRAF ADINI BURAYA YAZ */
+            background-size: cover;
+            background-position: center;
+            /* Fotoğrafı hafif karartıp bulanıklaştırarak mesajı öne çıkarıyoruz */
+            filter: blur(3px) brightness(50%); 
+            transform: scale(1.1); /* Bulanıklık kenarlarda beyazlık yapmasın diye hafif büyütüyoruz */
+            z-index: -1;
+        }
+
+        /* Mesaj Kutusu */
+        .main-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            height: 100%;
+            padding: 20px;
         }
 
-        .container {
-            text-align: center;
-            padding: 30px;
-            max-width: 500px;
-            border: 1px solid #333;
-            background: rgba(255, 255, 255, 0.03);
+        .message-box {
+            background-color: rgba(255, 255, 255, 0.9); /* Hafif şeffaf beyaz kutu */
+            color: #333;
+            padding: 40px;
             border-radius: 20px;
-            backdrop-filter: blur(10px);
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
-        h1 { font-weight: 300; letter-spacing: 2px; color: #fff; margin-bottom: 20px; }
-        
-        .quote { 
-            font-style: italic; 
-            color: #888; 
-            font-size: 0.9rem; 
-            margin-bottom: 30px;
-            line-height: 1.5;
+        h1 {
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .date {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
         }
 
         .personal-note {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 40px;
-            color: #ccc;
-        }
-
-        .spotify-frame {
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        footer {
-            position: absolute;
-            bottom: 20px;
-            font-size: 0.7rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 0;
             color: #444;
-            letter-spacing: 2px;
         }
+
+        .heart-icon {
+            color: #e74c3c;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Mutlu Yıllar.</h1>
-        
-        <div class="quote">
-            "And if a double-decker bus crashes into us... <br>
-            To die by your side is such a heavenly way to die."
-        </div>
+    <div class="background-image"></div>
 
-        <div class="personal-note">
-            Bu şarkıyı her dinlediğimde aklıma gelen tek kişi sensin. <br>
-            Yeni yaşın, bu melodiler kadar güzel ve unutulmaz olsun. <br>
-            İyi ki varsın.
-        </div>
-
-        <iframe class="spotify-frame" src="https://open.spotify.com/embed/track/0Ypfset99uV16ya9m9QpUu?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <div class="main-container">
+        <div class="message-box">
+            <h1>İyi Ki Doğdun!</h1>
+            <div class="date">2024</div> <p class="personal-note">
+                Yeni yaşın sana tüm güzellikleri getirsin. <br>
+                Seninle geçen her an, paylaştığımız her gülümseme benim için çok değerli. <br>
+                Birlikte daha nice güzel anılar biriktirmek dileğiyle... <br>
+                İyi ki varsın.
+            </p>
+            
+            <div class="heart-icon">🤍</div> </div>
     </div>
-
-    <footer>THERE IS A LIGHT THAT NEVER GOES OUT</footer>
 
 </body>
 </html>
