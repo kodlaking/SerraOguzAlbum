@@ -1,105 +1,98 @@
+Kesinlikle çok daha zarif ve cool bir tercih olur. İlişkinin başlarındaysanız veya çok fazla "fotoğraf biriktirme" aşamasına henüz gelmediyseniz, az sayıda fotoğrafı zorla bir albüme dönüştürmek dediğin gibi biraz ağır durabilir.
+
+The Smiths dinleyen, NFC kartla hediye hazırlayan biri için "Minimalist & Gizemli" bir yaklaşım çok daha karizmatik duracaktır. Sadece bir şarkı, çok derin bir mesaj ve belki sadece ikinizi anlatan tek bir ikonik görsel (mesela bir çift katlı otobüs çizimi veya sadece gökyüzü fotoğrafı) harika olur.
+
+İşte "Albüm" kısmını kaldırıp, odağı tamamen şarkı ve mesaja veren modern kod yapısı:
+
+Yeni Tasarım Stratejisi
+Odak Noktası: Şarkı sözleri ve senin ona yazdığın not.
+
+Görsel: Fotoğraf yerine arka planda yavaşça hareket eden bir renk geçişi veya çok sade bir yıldız efekti.
+
+Hissiyat: "Sadece ikimizin bildiği bir dijital mektup."
+
+Güncel index.html Kodu (Fotoğrafsız ve Şık)
+HTML
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sana Bir Mesajım Var!</title>
+    <title>Sana Bir Notum Var</title>
     <style>
-        /* Tasarım Ayarları - Smiths Temalı Koyu Tonlar */
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            font-family: 'Georgia', serif; 
             margin: 0; 
-            background: radial-gradient(circle, #1e2a2a 0%, #000000 100%); 
-            color: #f0f0f0; 
-            scroll-behavior: smooth; 
+            background: #0a0a0a; 
+            color: #e0e0e0; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
         }
-        
-        /* Karşılama Ekranı */
-        .hero { 
-            height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            text-align: center; 
-            background: linear-gradient(135deg, #2c3e50, #000000); 
-            padding: 20px; 
-            border-bottom: 2px solid #34495e;
-        }
-        
-        h1 { font-size: 2.8rem; margin-bottom: 10px; color: #ecf0f1; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-        .message { font-size: 1.1rem; max-width: 500px; margin-bottom: 20px; line-height: 1.6; color: #bdc3c7; }
 
-        /* Spotify Çalar Kutusu */
-        .spotify-container { width: 100%; max-width: 350px; margin-bottom: 30px; }
+        .container {
+            text-align: center;
+            padding: 30px;
+            max-width: 500px;
+            border: 1px solid #333;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
 
-        /* Buton Tasarımı */
-        .btn { 
-            padding: 12px 25px; 
-            background: transparent; 
-            color: #ecf0f1; 
-            text-decoration: none; 
-            border-radius: 5px; 
-            border: 1px solid #ecf0f1;
-            font-weight: bold; 
-            transition: 0.3s; 
-        }
-        .btn:hover { background: #ecf0f1; color: #000; }
-
-        /* Albüm Bölümü */
-        .album-section { padding: 60px 20px; background: #000; }
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-            gap: 15px; 
-            max-width: 1000px; 
-            margin: auto; 
-        }
-        .grid img { 
-            width: 100%; 
-            border-radius: 5px; 
-            filter: grayscale(20%); 
-            transition: 0.5s; 
-            cursor: pointer;
-        }
-        .grid img:hover { filter: grayscale(0%); transform: scale(1.02); }
+        h1 { font-weight: 300; letter-spacing: 2px; color: #fff; margin-bottom: 20px; }
         
-        footer { text-align: center; padding: 50px; font-size: 0.8rem; color: #444; letter-spacing: 1px; }
+        .quote { 
+            font-style: italic; 
+            color: #888; 
+            font-size: 0.9rem; 
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .personal-note {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            color: #ccc;
+        }
+
+        .spotify-frame {
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.7rem;
+            color: #444;
+            letter-spacing: 2px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <h1>İyi Ki Doğdun! 🎈</h1>
+    <div class="container">
+        <h1>Mutlu Yıllar.</h1>
         
-        <p class="message">
+        <div class="quote">
             "And if a double-decker bus crashes into us... <br>
-            To die by your side is such a heavenly way to die." <br><br>
-            Seninle geçen her saniye, bu şarkıdaki gibi sonsuz ve değerli. Bizim dünyamıza hoş geldin.
-        </p>
-
-        <!-- Spotify Yerleştirme -->
-        <div class="spotify-container">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0Ypfset99uV16ya9m9QpUu?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            To die by your side is such a heavenly way to die."
         </div>
 
-        <a href="#album" class="btn">Anılarımıza Bak →</a>
-    </div>
-
-    <div id="album" class="album-section">
-        <h2 style="text-align: center; margin-bottom: 40px; font-weight: 300;">Bizim Hikayemiz</h2>
-        <div class="grid">
-            <img src="WhatsApp Image 2026-03-29 at 23.20.45.jpeg" alt="Biz">
-            <img src="WhatsApp Image 2026-03-29 at 23.20.46 (1).jpeg" alt="Eğlence">
-            <img src="WhatsApp Image 2026-03-29 at 23.20.46 (2).jpeg" alt="Okul">
-            <img src="WhatsApp Image 2026-03-29 at 23.20.46.jpeg" alt="Yolculuk">
+        <div class="personal-note">
+            Bu şarkıyı her dinlediğimde aklıma gelen tek kişi sensin. <br>
+            Yeni yaşın, bu melodiler kadar güzel ve unutulmaz olsun. <br>
+            İyi ki varsın.
         </div>
+
+        <iframe class="spotify-frame" src="https://open.spotify.com/embed/track/0Ypfset99uV16ya9m9QpUu?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
 
-    <footer>
-        "There is a light that never goes out..." <br>
-        Bu sayfa sadece senin için tasarlandı.
-    </footer>
+    <footer>THERE IS A LIGHT THAT NEVER GOES OUT</footer>
 
 </body>
 </html>
