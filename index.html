@@ -3,29 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sana Bir Notum Var</title>
+    <title>İyi Ki Doğdun!</title>
     <style>
         /* Genel Stil */
         body {
             margin: 0;
             padding: 0;
-            background-color: #121212; /* Göz yormayan koyu arka plan */
+            background-color: #121212; /* Koyu modern arka plan */
             color: #e0e0e0;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
         }
 
+        /* --- DOĞUM GÜNÜ ARKA PLAN ANIMASYONU --- */
+        .celebration-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+        }
+
+        /* Konfeti Parçaları */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f2d74e;
+            opacity: 0.3;
+            top: -10px;
+            animation: fall 10s linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        /* Konfetilerin farklı renk ve hızları */
+        .confetti:nth-child(1) { left: 10%; background: #e74c3c; animation-duration: 7s; }
+        .confetti:nth-child(2) { left: 20%; background: #3498db; animation-duration: 9s; animation-delay: 2s; }
+        .confetti:nth-child(3) { left: 35%; background: #2ecc71; animation-duration: 6s; }
+        .confetti:nth-child(4) { left: 50%; background: #f1c40f; animation-duration: 11s; animation-delay: 1s; }
+        .confetti:nth-child(5) { left: 65%; background: #9b59b6; animation-duration: 8s; }
+        .confetti:nth-child(6) { left: 80%; background: #e67e22; animation-duration: 10s; animation-delay: 3s; }
+        .confetti:nth-child(7) { left: 95%; background: #1abc9c; animation-duration: 7s; }
+
+        /* --- İÇERİK ALANI --- */
         .container {
             max-width: 600px;
             width: 90%;
             padding: 40px 20px;
             text-align: center;
+            z-index: 1;
         }
 
-        /* Fotoğraf Alanı */
         .photo-wrapper {
             display: flex;
             gap: 15px;
@@ -39,71 +74,71 @@
             object-fit: cover;
             border-radius: 12px;
             border: 1px solid #333;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
-        /* Mesaj Alanı */
         .message-box {
-            background: #1e1e1e;
-            padding: 30px;
-            border-radius: 15px;
+            background: rgba(30, 30, 30, 0.9);
+            padding: 35px;
+            border-radius: 20px;
             border: 1px solid #2a2a2a;
             line-height: 1.8;
-            font-size: 1.1rem;
-            color: #ccc;
-            text-align: left; /* Mesajın daha okunaklı olması için sola yaslı */
+            text-align: left;
+            backdrop-filter: blur(5px);
         }
 
         h1 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-top: 0;
             color: #fff;
             text-align: center;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .footer-note {
-            margin-top: 25px;
+            margin-top: 30px;
             font-size: 0.8rem;
             color: #555;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
 
-        /* Mobil Düzenleme */
+        /* Mobilde fotoğraflar alt alta gelsin */
         @media (max-width: 480px) {
-            .photo-wrapper {
-                flex-direction: column;
-                align-items: center;
-            }
-            .photo-wrapper img {
-                width: 80%;
-            }
+            .photo-wrapper { flex-direction: column; align-items: center; }
+            .photo-wrapper img { width: 90%; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Arka Plan Animasyonu -->
+    <div class="celebration-bg">
+        <div class="confetti"></div><div class="confetti"></div>
+        <div class="confetti"></div><div class="confetti"></div>
+        <div class="confetti"></div><div class="confetti"></div>
+        <div class="confetti"></div>
+    </div>
+
     <div class="container">
         
-        <!-- İki Fotoğrafın Olduğu Kısım -->
         <div class="photo-wrapper">
-            <img src="foto1.jpg" alt="Anı 1">
-            <img src="foto2.jpg" alt="Anı 2">
+            <!-- İsimleri foto1.jpg ve foto2.jpg olarak ayarla -->
+            <img src="foto1.jpg" alt="Bize Dair">
+            <img src="foto2.jpg" alt="Bize Dair">
         </div>
 
-        <!-- Senin Mesajın -->
         <div class="message-box">
-            <h1>Mutlu Yıllar!</h1>
+            <h1>İyi Ki Doğdun! 🎈</h1>
             
-            <!-- BURAYI KENDİ MESAJINLA DOLDUR -->
+            <!-- MESAJINI BURAYA YAZ -->
             <p>
-                Buraya istediğin mesajı yazabilirsin. <br><br>
-                Satır başı yapmak istersen "br" etiketini kullanabilir veya direkt paragraf ekleyebilirsin. 
-                İkiniz için anlamlı olan o notu buraya bıraktığında tasarım tam oturacaktır.
+                Buraya istediğin o özel notu ekleyebilirsin. <br><br>
+                Satır başı yapmak için "br" kullanmayı unutma. Senin cümlelerinle burası çok daha anlamlı olacak.
             </p>
         </div>
 
-        <div class="footer-note">2026 • Bu sayfa senin için hazırlandı.</div>
+        <div class="footer-note">2026 • ÖZEL BİR GÜN</div>
 
     </div>
 
