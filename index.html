@@ -5,62 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sana Bir Notum Var</title>
     <style>
-        body, html { margin: 0; padding: 0; background-color: #0b0b0b; font-family: 'Segoe UI', sans-serif; color: white; scroll-behavior: smooth; }
-        
-        /* Kapak Ekranı */
-        .hero { position: relative; height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center; }
-        .hero-bg { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            background: url('ana-foto.jpg') center/cover; 
-            filter: brightness(35%) blur(1px); z-index: -1; 
+        /* Genel Stil */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* Göz yormayan koyu arka plan */
+            color: #e0e0e0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
-        /* Mesaj Kutusu */
-        .message-box { 
-            background: rgba(255, 255, 255, 0.98); color: #1a1a1a; 
-            padding: 35px; border-radius: 20px; max-width: 320px; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5); margin: 20px; 
+        .container {
+            max-width: 600px;
+            width: 90%;
+            padding: 40px 20px;
+            text-align: center;
         }
-        h1 { margin: 0 0 10px; font-size: 1.6rem; letter-spacing: -0.5px; }
-        p { font-size: 0.95rem; line-height: 1.6; color: #444; margin-bottom: 20px; }
-        .heart { color: #d63031; font-size: 1.2rem; }
 
-        /* Galeri Alanı */
-        .gallery { padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; max-width: 1000px; margin: auto; }
-        .gallery img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; transition: 0.3s; }
-        .gallery img:hover { transform: scale(1.02); opacity: 0.8; }
+        /* Fotoğraf Alanı */
+        .photo-wrapper {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
 
-        footer { text-align: center; padding: 40px; font-size: 0.7rem; color: #333; letter-spacing: 1px; }
+        .photo-wrapper img {
+            width: 45%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid #333;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Mesaj Alanı */
+        .message-box {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #2a2a2a;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #ccc;
+            text-align: left; /* Mesajın daha okunaklı olması için sola yaslı */
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            color: #fff;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .footer-note {
+            margin-top: 25px;
+            font-size: 0.8rem;
+            color: #555;
+            letter-spacing: 1px;
+        }
+
+        /* Mobil Düzenleme */
+        @media (max-width: 480px) {
+            .photo-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            .photo-wrapper img {
+                width: 80%;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <div class="hero-bg"></div>
-        <div class="message-box">
-            <h1>İyi ki Doğdun!</h1>
-            <p>Seninle geçen her an, paylaştığımız her gülümseme benim için çok değerli. Yeni yaşın sana tüm güzellikleri getirsin. <br><br> İyi ki varsın... <br> <span class="heart">❤</span></p>
+    <div class="container">
+        
+        <!-- İki Fotoğrafın Olduğu Kısım -->
+        <div class="photo-wrapper">
+            <img src="foto1.jpg" alt="Anı 1">
+            <img src="foto2.jpg" alt="Anı 2">
         </div>
+
+        <!-- Senin Mesajın -->
+        <div class="message-box">
+            <h1>Mutlu Yıllar!</h1>
+            
+            <!-- BURAYI KENDİ MESAJINLA DOLDUR -->
+            <p>
+                Buraya istediğin mesajı yazabilirsin. <br><br>
+                Satır başı yapmak istersen "br" etiketini kullanabilir veya direkt paragraf ekleyebilirsin. 
+                İkiniz için anlamlı olan o notu buraya bıraktığında tasarım tam oturacaktır.
+            </p>
+        </div>
+
+        <div class="footer-note">2026 • Bu sayfa senin için hazırlandı.</div>
+
     </div>
-
-    <div class="gallery" id="photoGallery">
-        <!-- Fotoğraflar buraya otomatik gelecek -->
-    </div>
-
-    <footer>2026 • ÖZEL BİR NOT</footer>
-
-    <script>
-        // KAÇ TANE FOTOĞRAF YÜKLEDİYSEN BURADAKİ SAYIYI DEĞİŞTİR
-        const toplamFotoSayisi = 2; 
-
-        const gallery = document.getElementById('photoGallery');
-        for (let i = 1; i <= toplamFotoSayisi; i++) {
-            const img = document.createElement('img');
-            img.src = `WhatsApp Image 2026-03-29 at 23.20.45.jpeg, WhatsApp Image 2026-03-29 at 23.20.46.jpeg`; // Fotoğrafların adları 1.jpg, 2.jpg... olmalı
-            img.loading = "lazy"; // Sayfanın hızlı açılması için
-            gallery.appendChild(img);
-        }
-    </script>
 
 </body>
 </html>
