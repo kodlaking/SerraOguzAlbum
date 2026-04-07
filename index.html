@@ -87,8 +87,8 @@
         
         <!-- Ana 2 Fotoğraf -->
         <div class="main-photos">
-            <img src="ana1.jpg" alt="Fotoğraf 1">
-            <img src="ana2.jpg" alt="Fotoğraf 2">
+            <img src="ana1.jpeg" alt="Fotoğraf 1">
+            <img src="ana2.jpeg" alt="Fotoğraf 2">
         </div>
 
         <!-- Senin Mesajın -->
@@ -119,7 +119,7 @@
         for (let i = 1; i <= fotoSayisi; i++) {
             const img = document.createElement('img');
             // Fotoğrafların isimleri 1.jpg, 2.jpg... 30.jpg olmalı
-            img.src = `${i}.jpg`; 
+            img.src = `${i}.jpeg`; 
             img.alt = `Anı ${i}`;
             // Eğer fotoğraf yoksa boş görünmesin diye gizle (opsiyonel)
             img.onerror = function() { this.style.display = 'none'; };
