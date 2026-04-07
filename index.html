@@ -5,116 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İyi Ki Doğdun!</title>
     <style>
-        /* Genel Stil */
         body {
-            margin: 0;
-            padding: 0;
-            background-color: #121212; /* Koyu modern arka plan */
+            margin: 0; padding: 0;
+            background-color: #121212;
             color: #e0e0e0;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
+            display: flex; flex-direction: column; align-items: center;
+            min-height: 100vh; overflow-x: hidden; position: relative;
         }
 
-        /* --- DOĞUM GÜNÜ ARKA PLAN ANIMASYONU --- */
+        /* --- DOĞUM GÜNÜ ARKA PLAN --- */
         .celebration-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
         }
-
-        /* Konfeti Parçaları */
         .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #f2d74e;
-            opacity: 0.3;
-            top: -10px;
-            animation: fall 10s linear infinite;
+            position: absolute; width: 10px; height: 10px; opacity: 0.2;
+            top: -10px; animation: fall 10s linear infinite;
         }
-
-        @keyframes fall {
-            to { transform: translateY(100vh) rotate(360deg); }
-        }
-
-        /* Konfetilerin farklı renk ve hızları */
+        @keyframes fall { to { transform: translateY(100vh) rotate(360deg); } }
         .confetti:nth-child(1) { left: 10%; background: #e74c3c; animation-duration: 7s; }
-        .confetti:nth-child(2) { left: 20%; background: #3498db; animation-duration: 9s; animation-delay: 2s; }
-        .confetti:nth-child(3) { left: 35%; background: #2ecc71; animation-duration: 6s; }
-        .confetti:nth-child(4) { left: 50%; background: #f1c40f; animation-duration: 11s; animation-delay: 1s; }
-        .confetti:nth-child(5) { left: 65%; background: #9b59b6; animation-duration: 8s; }
-        .confetti:nth-child(6) { left: 80%; background: #e67e22; animation-duration: 10s; animation-delay: 3s; }
-        .confetti:nth-child(7) { left: 95%; background: #1abc9c; animation-duration: 7s; }
+        .confetti:nth-child(2) { left: 30%; background: #3498db; animation-duration: 9s; }
+        .confetti:nth-child(3) { left: 50%; background: #2ecc71; animation-duration: 6s; }
+        .confetti:nth-child(4) { left: 70%; background: #f1c40f; animation-duration: 11s; }
+        .confetti:nth-child(5) { left: 90%; background: #9b59b6; animation-duration: 8s; }
 
-        /* --- İÇERİK ALANI --- */
-        .container {
-            max-width: 600px;
-            width: 90%;
-            padding: 40px 20px;
-            text-align: center;
-            z-index: 1;
+        /* --- İÇERİK --- */
+        .container { max-width: 600px; width: 90%; padding: 40px 0; text-align: center; }
+
+        /* Ana İki Fotoğraf */
+        .main-photos { display: flex; gap: 15px; justify-content: center; margin-bottom: 30px; }
+        .main-photos img {
+            width: 45%; aspect-ratio: 1; object-fit: cover;
+            border-radius: 15px; border: 1px solid #333; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
-        .photo-wrapper {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-
-        .photo-wrapper img {
-            width: 45%;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 1px solid #333;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
-
+        /* Mesaj Kutusu */
         .message-box {
-            background: rgba(30, 30, 30, 0.9);
-            padding: 35px;
-            border-radius: 20px;
-            border: 1px solid #2a2a2a;
-            line-height: 1.8;
-            text-align: left;
-            backdrop-filter: blur(5px);
+            background: rgba(30, 30, 30, 0.9); padding: 30px;
+            border-radius: 20px; border: 1px solid #2a2a2a;
+            line-height: 1.8; text-align: left; backdrop-filter: blur(5px);
+            margin-bottom: 50px;
         }
+        h1 { font-size: 1.8rem; margin: 0 0 15px; text-align: center; color: #fff; }
 
-        h1 {
-            font-size: 2rem;
-            margin-top: 0;
-            color: #fff;
-            text-align: center;
-            font-weight: 600;
+        /* --- ALBÜM / GALERİ --- */
+        .album-section { width: 100%; margin-top: 20px; }
+        .album-section h2 { font-weight: 300; font-size: 1.2rem; color: #888; margin-bottom: 20px; letter-spacing: 2px; }
+        
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            padding: 10px;
         }
-
-        .footer-note {
-            margin-top: 30px;
-            font-size: 0.8rem;
-            color: #555;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
+        .photo-grid img {
+            width: 100%; aspect-ratio: 1; object-fit: cover;
+            border-radius: 8px; background-color: #222; /* Fotoğraf yüklenene kadar boş yer */
+            transition: transform 0.3s ease;
         }
+        .photo-grid img:hover { transform: scale(1.05); }
 
-        /* Mobilde fotoğraflar alt alta gelsin */
+        footer { margin: 50px 0; font-size: 0.7rem; color: #444; letter-spacing: 2px; }
+
         @media (max-width: 480px) {
-            .photo-wrapper { flex-direction: column; align-items: center; }
-            .photo-wrapper img { width: 90%; }
+            .main-photos { flex-direction: column; align-items: center; }
+            .main-photos img { width: 90%; }
+            .photo-grid { grid-template-columns: repeat(3, 1fr); } /* Mobilde 3'lü yan yana */
         }
     </style>
 </head>
 <body>
 
-    <!-- Arka Plan Animasyonu -->
     <div class="celebration-bg">
-        <div class="confetti"></div><div class="confetti"></div>
         <div class="confetti"></div><div class="confetti"></div>
         <div class="confetti"></div><div class="confetti"></div>
         <div class="confetti"></div>
@@ -122,25 +85,47 @@
 
     <div class="container">
         
-        <div class="photo-wrapper">
-            <!-- İsimleri foto1.jpg ve foto2.jpg olarak ayarla -->
-            <img src="foto1.jpg" alt="Bize Dair">
-            <img src="foto2.jpg" alt="Bize Dair">
+        <!-- Ana 2 Fotoğraf -->
+        <div class="main-photos">
+            <img src="ana1.jpg" alt="Fotoğraf 1">
+            <img src="ana2.jpg" alt="Fotoğraf 2">
         </div>
 
+        <!-- Senin Mesajın -->
         <div class="message-box">
-            <h1>İyi Ki Doğdun! 🎈</h1>
-            
-            <!-- MESAJINI BURAYA YAZ -->
-            <p>
-                Buraya istediğin o özel notu ekleyebilirsin. <br><br>
-                Satır başı yapmak için "br" kullanmayı unutma. Senin cümlelerinle burası çok daha anlamlı olacak.
+            <h1>İyi Ki Doğdun! 🎉</h1>
+            <p id="my-message">
+                Buraya mesajını yazabilirsin. <br><br>
+                Satır başları için br kullanmayı unutma.
             </p>
         </div>
 
-        <div class="footer-note">2026 • ÖZEL BİR GÜN</div>
+        <!-- 30 Fotoluk Albüm -->
+        <div class="album-section">
+            <h2>ANILARIMIZ</h2>
+            <div class="photo-grid" id="galleryGrid">
+                <!-- Fotoğraflar JS ile buraya eklenecek -->
+            </div>
+        </div>
 
+        <footer>2026 • ÖZEL BİR GÜN</footer>
     </div>
+
+    <script>
+        // Albüme kaç fotoğraf eklemek istiyorsan sayıyı buradan ayarla
+        const fotoSayisi = 30; 
+        const grid = document.getElementById('galleryGrid');
+
+        for (let i = 1; i <= fotoSayisi; i++) {
+            const img = document.createElement('img');
+            // Fotoğrafların isimleri 1.jpg, 2.jpg... 30.jpg olmalı
+            img.src = `${i}.jpg`; 
+            img.alt = `Anı ${i}`;
+            // Eğer fotoğraf yoksa boş görünmesin diye gizle (opsiyonel)
+            img.onerror = function() { this.style.display = 'none'; };
+            grid.appendChild(img);
+        }
+    </script>
 
 </body>
 </html>
